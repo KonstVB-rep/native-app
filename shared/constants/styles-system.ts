@@ -13,10 +13,13 @@ export const Colors = {
 	btnHoverColor: '#044d65',
 	linkColor: '#0a7ea4',
 	alert: '#CC384E',
+	transparent: 'transparent',
 };
 
 export const Gaps = {
+	g10: 10,
 	g16: 16,
+	g20: 20,
 	g24: 24,
 	g32: 32,
 	g40: 40,
@@ -31,4 +34,11 @@ export const FontSize = {
 	f16: 16,
 	f18: 18,
 	f20: 20,
+	f40: 40,
+};
+
+export const FontFamily = {
+	FiraSans: 'FiraSans',
+	FiraSansSemiBold: 'FiraSansSemiBold',
+	SourGummyExpandedSemiBoldItalic: 'SourGummyExpandedSemiBoldItalic',
 };

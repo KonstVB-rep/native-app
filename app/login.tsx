@@ -1,13 +1,13 @@
 import Button from '@/shared/Button/Button';
-import { Colors, FontSize, Gaps, Radius } from '@/shared/constants/styles-system';
+import { Colors, FontFamily, FontSize, Gaps } from '@/shared/constants/styles-system';
 import ErrorNotification from '@/shared/ErrorNotification/ErrorNotification';
 import Input from '@/shared/Input/Input';
 import { useState } from 'react';
-import Logo from '@/assets/images/logo.png';
 
-import { Image, Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
+import CustomLink from '@/shared/CustomLink/CustomLink';
 
-export default function HomeScreen() {
+export default function Login() {
 	const [error, setError] = useState<string | null>(null);
 
 	const alertFn = () => {
@@ -19,13 +19,13 @@ export default function HomeScreen() {
 		<View style={styles.container}>
 			<ErrorNotification error={error} />
 			<View style={styles.content}>
-				<Image source={Logo} resizeMode="contain" style={styles.logo} />
 				<View style={styles.form}>
+					<Text style={styles.title}>ertel</Text>
 					<Input placeholder="Кто ты, воин?" placeholderTextColor={Colors.gray} />
 					<Input placeholder="Пароль" placeholderTextColor={Colors.gray} isPassword={true} />
 					<Button text="Войти" onPress={() => alertFn()} disabled={false} />
 				</View>
-				<Text style={styles.link}>Восстановить пароль</Text>
+				<CustomLink text="Восстановить пароль" href={'/restore'} />
 			</View>
 		</View>
 	);
@@ -36,12 +36,18 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		flex: 1,
 		padding: 55,
-		backgroundColor: Colors.primary,
 	},
 	content: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		gap: Gaps.g40,
+		zIndex: 2,
+	},
+	title: {
+		fontSize: FontSize.f40,
+		textAlign: 'center',
+		color: Colors.secondary,
+		fontFamily: FontFamily.SourGummyExpandedSemiBoldItalic,
 	},
 	form: {
 		alignSelf: 'stretch',
@@ -49,16 +55,5 @@ const styles = StyleSheet.create({
 		margin: 'auto',
 		gap: Gaps.g24,
 		maxWidth: 400,
-	},
-	logo: {
-		width: 200,
-		height: 200,
-		borderRadius: Radius.rFull,
-	},
-	link: {
-		fontSize: FontSize.f16,
-		fontWeight: 'bold',
-		textTransform: 'uppercase',
-		color: Colors.linkColor,
 	},
 });

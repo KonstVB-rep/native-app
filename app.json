@@ -7,6 +7,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    // "backgroundColor": "#2E2D3D",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -22,18 +23,23 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#16171D"
+    },
+    // "plugins": [
+    //   "expo-router",
+    //   [
+    //     "expo-splash-screen",
+    //     {
+    //       "image": "./assets/images/splash-icon.png",
+    //       "imageWidth": "100%",
+    //       "resizeMode": "contain",
+    //       "backgroundColor": "#2E2D3D"
+    //     }
+    //   ]
+    // ],
     "experiments": {
       "typedRoutes": true
     }

@@ -7,7 +7,7 @@ import {
 	GestureResponderEvent,
 } from 'react-native';
 import React from 'react';
-import { Colors, FontSize, Radius } from '../constants/styles-system';
+import { Colors, FontFamily, FontSize, Radius } from '../constants/styles-system';
 
 const Button = ({ text, ...props }: PressableProps & { text: string }) => {
 	const animatedValue = new Animated.Value(100);
@@ -62,5 +62,6 @@ const style = StyleSheet.create({
 	text: {
 		color: Colors.secondary,
 		fontSize: FontSize.f20,
+		fontFamily: FontFamily.FiraSans,
 	},
 });
