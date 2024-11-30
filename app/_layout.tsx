@@ -1,22 +1,51 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Colors } from '@/shared/constants/styles-system';
 import { Stack } from 'expo-router';
-// import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
 import 'react-native-reanimated';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useEffect } from 'react';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
+SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
-	const colorScheme = useColorScheme();
+	const [loaded, error] = useFonts({
+		FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
+		FiraSansSemiBold: require('../assets/fonts/FiraSans-SemiBold.ttf'),
+		SourGummyExpandedSemiBoldItalic: require('../assets/fonts/SourGummy_Expanded-SemiBoldItalic.ttf'),
+	});
+
+	const insets = useSafeAreaInsets();
+
+	useEffect(() => {
+		if (loaded || error) {
+			SplashScreen.hideAsync();
+		}
+	}, [loaded, error]);
+
+	if (!loaded && !error) {
+		return null;
+	}
 
 	return (
-		<ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-			<Stack>
-				{/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
-				<Stack.Screen name="index" options={{ headerShown: false }} />
+		<SafeAreaProvider>
+			<StatusBar style="light" />
+			<Stack
+				screenOptions={{
+					statusBarBackgroundColor: Colors.darkColor,
+					headerShown: false,
+					contentStyle: {
+						backgroundColor: Colors.primary,
+						paddingTop: insets.top,
+					},
+				}}
+			>
+				<Stack.Screen name="login" />
+				<Stack.Screen name="restore" options={{ presentation: 'modal' }} />
 				<Stack.Screen name="+not-found" />
 			</Stack>
 			<StatusBar style="auto" />
-		</ThemeProvider>
+		</SafeAreaProvider>
 	);
 }
