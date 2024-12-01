@@ -5,12 +5,19 @@ import {
 	StyleSheet,
 	Animated,
 	GestureResponderEvent,
+	ActivityIndicator,
 } from 'react-native';
 import React from 'react';
 import { Colors, FontFamily, FontSize, Radius } from '../constants/styles-system';
 
-const Button = ({ text, ...props }: PressableProps & { text: string }) => {
+const Button = ({
+	text,
+	isLoading,
+	...props
+}: PressableProps & { text: string; isLoading?: boolean }) => {
 	const animatedValue = new Animated.Value(100);
+
+	console.log(isLoading);
 
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
@@ -43,7 +50,11 @@ const Button = ({ text, ...props }: PressableProps & { text: string }) => {
 					backgroundColor: color,
 				}}
 			>
-				<Text style={style.text}>{text}</Text>
+				{!isLoading ? (
+					<Text style={style.text}>{text}</Text>
+				) : (
+					<ActivityIndicator size="large" color={Colors.secondary} />
+				)}
 			</Animated.View>
 		</Pressable>
 	);

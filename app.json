@@ -5,9 +5,8 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    // "backgroundColor": "#2E2D3D",
+    "scheme": "native-app",
+    "userInterfaceStyle": "#16171D",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -28,18 +27,6 @@
       "resizeMode": "cover",
       "backgroundColor": "#16171D"
     },
-    // "plugins": [
-    //   "expo-router",
-    //   [
-    //     "expo-splash-screen",
-    //     {
-    //       "image": "./assets/images/splash-icon.png",
-    //       "imageWidth": "100%",
-    //       "resizeMode": "contain",
-    //       "backgroundColor": "#2E2D3D"
-    //     }
-    //   ]
-    // ],
     "experiments": {
       "typedRoutes": true
     }
