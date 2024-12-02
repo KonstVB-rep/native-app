@@ -5,7 +5,7 @@ import { Colors, FontSize } from '@/shared/constants/styles-system';
 
 const ProjectPage = () => {
 	const { title } = useLocalSearchParams();
-	console.log(title);
+
 	return (
 		<View>
 			<Text style={{ color: Colors.secondary, fontSize: FontSize.f20 }}>
