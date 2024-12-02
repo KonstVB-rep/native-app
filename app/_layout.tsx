@@ -42,6 +42,7 @@ export default function RootLayout() {
 				}}
 			>
 				<Stack.Screen name="login" />
+				<Stack.Screen name="logout" />
 				<Stack.Screen name="restore" options={{ presentation: 'modal' }} />
 				<Stack.Screen name="+not-found" />
 			</Stack>
