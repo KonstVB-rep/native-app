@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 		fontSize: FontSize.f20,
 		color: Colors.white,
 		fontFamily: FontFamily.FiraSans,
-	},
+	} as TextInputProps,
 	icon: {
 		position: 'absolute',
 		right: 10,

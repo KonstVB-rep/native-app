@@ -22,7 +22,6 @@ export const loginAtom = atom(
 	async (_get, set, { email, password }: ILoginRequest) => {
 		set(authAtom, { accessToken: null, isLoading: true, error: null });
 		try {
-			await new Promise<void>((resolve) => setTimeout(() => resolve(), 3000));
 			const { data } = await axios.post<IAuthResponse>(API_PATH.login, {
 				email,
 				password,

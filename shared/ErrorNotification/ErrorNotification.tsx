@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, StyleSheet, Animated } from 'react-native';
+import { Text, StyleSheet, Animated, TextStyle } from 'react-native';
 import { ErrorNotificationProps } from './ErrorNotification.props';
 import { Colors, FontFamily, FontSize } from '../constants/styles-system';
 
@@ -68,5 +68,5 @@ const style = StyleSheet.create({
 		color: Colors.white,
 		textAlign: 'center',
 		fontFamily: FontFamily.FiraSans,
-	},
+	} as TextStyle,
 });
