@@ -5,22 +5,31 @@ import {
 	StyleSheet,
 	Animated,
 	GestureResponderEvent,
+	ActivityIndicator,
+	TextStyle,
 } from 'react-native';
 import React from 'react';
 import { Colors, FontFamily, FontSize, Radius } from '../constants/styles-system';
 
-const Button = ({ text, ...props }: PressableProps & { text: string }) => {
+const Button = ({
+	text,
+	isLoading,
+	...props
+}: PressableProps & { text: string; isLoading?: boolean }) => {
 	const animatedValue = new Animated.Value(100);
+
 
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
 		outputRange: [Colors.btnHoverColor, Colors.btnColor],
 	});
 
+
+
 	const fadeIn = (event: GestureResponderEvent) => {
 		Animated.timing(animatedValue, {
 			toValue: 0,
-			duration: 150,
+			duration: 100,
 			useNativeDriver: false,
 		}).start();
 		props.onPressIn?.(event);
@@ -29,7 +38,7 @@ const Button = ({ text, ...props }: PressableProps & { text: string }) => {
 	const fadeOut = (event: GestureResponderEvent) => {
 		Animated.timing(animatedValue, {
 			toValue: 100,
-			duration: 150,
+			duration: 100,
 			useNativeDriver: false,
 		}).start();
 		props.onPressOut?.(event);
@@ -43,7 +52,11 @@ const Button = ({ text, ...props }: PressableProps & { text: string }) => {
 					backgroundColor: color,
 				}}
 			>
-				<Text style={style.text}>{text}</Text>
+				{!isLoading ? (
+					<Text style={style.text}>{text}</Text>
+				) : (
+					<ActivityIndicator size="large" color={Colors.secondary} />
+				)}
 			</Animated.View>
 		</Pressable>
 	);
@@ -56,12 +69,12 @@ const style = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: Radius.r10,
-		height: 58,
-		// backgroundColor: Colors.btnColor,
+		height: 50,
+		paddingHorizontal: 20,
 	},
 	text: {
 		color: Colors.secondary,
-		fontSize: FontSize.f20,
 		fontFamily: FontFamily.FiraSans,
-	},
+		fontSize: FontSize.f18,
+	} as TextStyle,
 });

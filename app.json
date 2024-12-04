@@ -3,11 +3,10 @@
     "name": "native-app",
     "slug": "native-app",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    // "backgroundColor": "#2E2D3D",
+    "icon": "./assets/images/ertel.png",
+    "scheme": "native-app",
+    "backgroundColor": "",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -15,7 +14,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#16171D"
       }
     },
     "web": {
@@ -23,25 +22,38 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#16171D"
-    },
-    // "plugins": [
-    //   "expo-router",
-    //   [
-    //     "expo-splash-screen",
-    //     {
-    //       "image": "./assets/images/splash-icon.png",
-    //       "imageWidth": "100%",
-    //       "resizeMode": "contain",
-    //       "backgroundColor": "#2E2D3D"
-    //     }
-    //   ]
-    // ],
+    // "splash": {
+    //   "image": "./assets/images/splash-icon.png",
+    //   "resizeMode": "cover",
+    //   "backgroundColor": "#16171D"
+    // },
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/FiraSans-Regular.ttf", "./assets/fonts/FiraSans-SemiBold.ttf"]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#16171D",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 300
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./local/assets/images/logo.png",
+          "color": "#16171D",
+          "defaultChannel": "default",
+          "enableBackgroundRemoteNotifications": false
+        }
+      ]
+    ]
   }
 }

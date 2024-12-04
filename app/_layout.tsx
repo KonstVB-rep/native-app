@@ -7,13 +7,14 @@ import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
+import { Notificaiton } from '@/shared/Notification/Notification';
 
 SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
 	const [loaded, error] = useFonts({
-		FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
-		FiraSansSemiBold: require('../assets/fonts/FiraSans-SemiBold.ttf'),
-		SourGummyExpandedSemiBoldItalic: require('../assets/fonts/SourGummy_Expanded-SemiBoldItalic.ttf'),
+		'FiraSans-Regular': require('../assets/fonts/FiraSans-Regular.ttf'),
+		'FiraSans-SemiBold': require('../assets/fonts/FiraSans-SemiBold.ttf'),
 	});
 
 	const insets = useSafeAreaInsets();
@@ -30,6 +31,7 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaProvider>
+			<Notificaiton />
 			<StatusBar style="light" />
 			<Stack
 				screenOptions={{
@@ -42,6 +44,7 @@ export default function RootLayout() {
 				}}
 			>
 				<Stack.Screen name="login" />
+				<Stack.Screen name="logout" />
 				<Stack.Screen name="restore" options={{ presentation: 'modal' }} />
 				<Stack.Screen name="+not-found" />
 			</Stack>

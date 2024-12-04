@@ -10,7 +10,7 @@ const Restore = () => {
 				<Text style={{ color: Colors.secondary }}>Back</Text>
 			</Link>
 			<Text style={{ color: Colors.secondary }}>Restore</Text>
-			<CustomLink text="На объект" href={'/projects/Наш_Дом'} />
+			<CustomLink text="На объект" href={'/objects/Наш_Дом'} />
 		</View>
 	);
 };

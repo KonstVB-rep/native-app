@@ -1,32 +1,75 @@
 import Button from '@/shared/Button/Button';
-import { Colors, FontFamily, FontSize, Gaps } from '@/shared/constants/styles-system';
+import { Colors, Gaps } from '@/shared/constants/styles-system';
 import ErrorNotification from '@/shared/ErrorNotification/ErrorNotification';
 import Input from '@/shared/Input/Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Text, StyleSheet, View } from 'react-native';
-import CustomLink from '@/shared/CustomLink/CustomLink';
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
+import { loginAtom } from '@/entities/auth/model/auth.state';
+import { useAtom } from 'jotai';
+import { router } from 'expo-router';
 
 export default function Login() {
-	const [error, setError] = useState<string | null>(null);
+	const [localError, setLocalError] = useState<string | null>(null);
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [{ accessToken, isLoading, error }, login] = useAtom(loginAtom);
 
-	const alertFn = () => {
-		setError('Неверный логин и пароль');
-		setTimeout(() => setError(null), 4000);
+	const submit = () => {
+		if (!email) {
+			setLocalError('Введите email');
+			return;
+		}
+		if (!password) {
+			setLocalError('Введите пароль');
+			return;
+		}
+
+		login({ email, password });
 	};
+
+	useEffect(() => {
+		if (error) {
+			setLocalError(error);
+		}
+	}, [error]);
+
+	useEffect(() => {
+		if (accessToken) {
+			router.replace('/');
+		}
+	}, [accessToken]);
 
 	return (
 		<View style={styles.container}>
-			<ErrorNotification error={error} />
-			<View style={styles.content}>
+			<ErrorNotification error={localError} />
+			<KeyboardAvoidingView
+				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+				style={styles.content}
+			>
 				<View style={styles.form}>
-					<Text style={styles.title}>ertel</Text>
-					<Input placeholder="Кто ты, воин?" placeholderTextColor={Colors.gray} />
-					<Input placeholder="Пароль" placeholderTextColor={Colors.gray} isPassword={true} />
-					<Button text="Войти" onPress={() => alertFn()} disabled={false} />
+					<View style={styles.inputs}>
+						{/* <Image
+						resizeMode="cover"
+						source={require('../assets/images/_logo.png')}
+						style={styles.image}
+					/> */}
+						<Input
+							placeholder="Кто ты, воин?"
+							placeholderTextColor={Colors.gray}
+							onChangeText={setEmail}
+						/>
+						<Input
+							placeholder="Пароль"
+							placeholderTextColor={Colors.gray}
+							isPassword={true}
+							onChangeText={setPassword}
+						/>
+					</View>
+					<Button text="Войти" isLoading={isLoading} onPress={submit} disabled={false} />
 				</View>
-				<CustomLink text="Восстановить пароль" href={'/restore'} />
-			</View>
+				{/* <CustomLink text="Восстановить пароль" href={'/restore'} /> */}
+			</KeyboardAvoidingView>
 		</View>
 	);
 }
@@ -43,17 +86,19 @@ const styles = StyleSheet.create({
 		gap: Gaps.g40,
 		zIndex: 2,
 	},
-	title: {
-		fontSize: FontSize.f40,
-		textAlign: 'center',
-		color: Colors.secondary,
-		fontFamily: FontFamily.SourGummyExpandedSemiBoldItalic,
-	},
+	// image: {
+	// 	width: 150,
+	// 	height: 50,
+	// 	margin: 'auto',
+	// },
 	form: {
 		alignSelf: 'stretch',
 		width: '100%',
 		margin: 'auto',
 		gap: Gaps.g24,
 		maxWidth: 400,
+	},
+	inputs: {
+		gap: Gaps.g16,
 	},
 });
