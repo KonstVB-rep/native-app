@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
-import { Notificaiton } from '@/shared/Notification/Notification';
+// import { Notificaiton } from '@/shared/Notification/Notification';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,7 +31,7 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaProvider>
-			<Notificaiton />
+			{/* <Notificaiton /> */}
 			<StatusBar style="light" />
 			<Stack
 				screenOptions={{
@@ -45,7 +45,8 @@ export default function RootLayout() {
 			>
 				<Stack.Screen name="login" />
 				<Stack.Screen name="logout" />
-				<Stack.Screen name="restore" options={{ presentation: 'modal' }} />
+				{/* <Stack.Screen name="объекты" /> */}
+				{/* <Stack.Screen name="restore" options={{ presentation: 'modal' }} /> */}
 				<Stack.Screen name="+not-found" />
 			</Stack>
 			<StatusBar style="auto" />

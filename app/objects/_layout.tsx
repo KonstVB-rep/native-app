@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Redirect } from 'expo-router';
-import { Colors, FontFamily, FontSize } from '@/shared/constants/styles-system';
+import { Redirect, Stack } from 'expo-router';
 import { authAtom } from '@/entities/auth/model/auth.state';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
-import CustomDrawer from '@/widgets/layout/ui/CustomDrawer/CustomDrawer';
 import { useAtomValue } from 'jotai';
-import MenuButton from '@/features/layout/ui/MenuIButton/MenuButton';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Colors } from '@/shared/constants/styles-system';
 
-const AppLayout = () => {
+const ObjectsLayout = () => {
 	const { accessToken } = useAtomValue(authAtom);
 
 	if (!accessToken) {
@@ -17,8 +13,25 @@ const AppLayout = () => {
 	}
 
 	return (
-		<>
-			<GestureHandlerRootView style={style.container}>
+		<SafeAreaProvider>
+			{/* <StatusBar style="light" /> */}
+			<Stack
+				screenOptions={{
+					statusBarBackgroundColor: Colors.darkColor,
+					headerShown: false,
+					contentStyle: {
+						backgroundColor: Colors.primary,
+					},
+				}}
+			>
+				<Stack.Screen
+					name="[title]"
+					options={({ route }) => ({
+						title: `${(route.params as { title: string })?.title as string}`,
+						headerShown: true,
+					})}
+				/>
+				{/* <GestureHandlerRootView style={style.container}>
 				<Drawer
 					drawerContent={(props) => <CustomDrawer {...props} />}
 					screenOptions={({ navigation }) => ({
@@ -45,16 +58,17 @@ const AppLayout = () => {
 					<Drawer.Screen name="profile" options={{ title: 'Профиль' }} />
 					<Drawer.Screen name="qr-scanner" options={{ title: 'Qr-код сканер' }} />
 				</Drawer>
-			</GestureHandlerRootView>
-		</>
+			</GestureHandlerRootView> */}
+			</Stack>
+		</SafeAreaProvider>
 	);
 };
 
-export default AppLayout;
+export default ObjectsLayout;
 
-const style = StyleSheet.create({
-	container: {
-		position: 'relative',
-		flex: 1,
-	},
-});
+// const style = StyleSheet.create({
+// 	container: {
+// 		position: 'relative',
+// 		flex: 1,
+// 	},
+// });
