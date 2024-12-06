@@ -113,7 +113,7 @@ const ImageUploader = ({ onUpload, onError }: ImageUploaderProps) => {
 
 export default ImageUploader;
 
-export const style = StyleSheet.create({
+const style = StyleSheet.create({
 	iconContainer: {
 		position: 'absolute',
 		display: 'flex',

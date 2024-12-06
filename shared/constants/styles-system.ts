@@ -11,12 +11,15 @@ export const Colors = {
 	secondary: '#fffafa',
 	white: '#ffffff',
 	black: '#000000',
+	blackAlpha50: '#00000080',
+	blackAlpha30: '#0000004d',
 	gray: '#AFB2BF',
 	darkColor: '#2E2D3D',
 	btnColor: '#07a1e9',
 	btnHoverColor: '#044d65',
 	linkColor: '#0a7ea4',
 	alert: '#CC384E',
+	success: '#00C48C',
 	transparent: 'transparent',
 };
 

@@ -17,34 +17,43 @@ const AppLayout = () => {
 	}
 
 	return (
-		<GestureHandlerRootView style={style.container}>
-			<Drawer
-				drawerContent={(props) => <CustomDrawer {...props} />}
-				screenOptions={({ navigation }) => ({
-					headerStyle: {
-						backgroundColor: Colors.primaryLight,
-						shadowColor: Colors.primaryLight,
-					},
-					overlayColor: Colors.gray,
-					headerLeft: () => <MenuButton navigation={navigation} />,
-					headerTitleAlign: 'center',
-					headerTitleStyle: {
-						color: Colors.secondary,
-						fontFamily: FontFamily.FiraSans,
-						fontSize: FontSize.f20,
-					},
-					headerTintColor: Colors.linkColor,
-					drawerStyle: {
-						width: '100%',
-					},
-					sceneStyle: { backgroundColor: Colors.primary },
-				})}
-			>
-				<Drawer.Screen name="index" options={{ title: 'Объекты' }} />
-				<Drawer.Screen name="profile" options={{ title: 'Профиль' }} />
-				<Drawer.Screen name="qr-scanner" options={{ title: 'Qr-код сканер' }} />
-			</Drawer>
-		</GestureHandlerRootView>
+		<>
+			<GestureHandlerRootView style={style.container}>
+				<Drawer
+					drawerContent={(props) => <CustomDrawer {...props} />}
+					screenOptions={({ navigation }) => ({
+						headerStyle: {
+							backgroundColor: Colors.primaryLight,
+							shadowColor: Colors.primaryLight,
+							// position: 'relative',
+							// zIndex: 2,
+						},
+						overlayColor: Colors.gray,
+						headerLeft: () => <MenuButton navigation={navigation} />,
+						headerTitleAlign: 'center',
+						headerTitleStyle: {
+							color: Colors.secondary,
+							fontFamily: FontFamily.FiraSans,
+							fontSize: FontSize.f20,
+						},
+						headerTintColor: Colors.linkColor,
+						drawerStyle: {
+							width: '100%',
+						},
+						sceneStyle: { backgroundColor: Colors.primary },
+					})}
+				>
+					<Drawer.Screen name="index" options={{ title: 'Объекты' }} />
+					<Drawer.Screen name="profile" options={{ title: 'Профиль' }} />
+					<Drawer.Screen
+						name="qr-scanner"
+						options={{
+							title: 'Qr-код сканер',
+						}}
+					/>
+				</Drawer>
+			</GestureHandlerRootView>
+		</>
 	);
 };
 
@@ -52,7 +61,8 @@ export default AppLayout;
 
 const style = StyleSheet.create({
 	container: {
-		position: 'relative',
+		// position: 'relative',
+		// zIndex: 2,
 		flex: 1,
 	},
 });

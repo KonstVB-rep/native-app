@@ -18,13 +18,10 @@ const Button = ({
 }: PressableProps & { text: string; isLoading?: boolean }) => {
 	const animatedValue = new Animated.Value(100);
 
-
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
 		outputRange: [Colors.btnHoverColor, Colors.btnColor],
 	});
-
-
 
 	const fadeIn = (event: GestureResponderEvent) => {
 		Animated.timing(animatedValue, {

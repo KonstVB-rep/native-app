@@ -1,12 +1,5 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import QrCodeScanner from '@/widgets/objects/ui/QrCodeScanner/QrCodeScanner';
 
-const QrScanner = () => {
-	return (
-		<View>
-			<Text>QrScanner</Text>
-		</View>
-	);
-};
-
-export default QrScanner;
+export default function QrScannerPage() {
+	return <QrCodeScanner />;
+}
