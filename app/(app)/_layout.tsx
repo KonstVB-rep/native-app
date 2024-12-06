@@ -25,6 +25,8 @@ const AppLayout = () => {
 						headerStyle: {
 							backgroundColor: Colors.primaryLight,
 							shadowColor: Colors.primaryLight,
+							// position: 'relative',
+							// zIndex: 2,
 						},
 						overlayColor: Colors.gray,
 						headerLeft: () => <MenuButton navigation={navigation} />,
@@ -43,7 +45,12 @@ const AppLayout = () => {
 				>
 					<Drawer.Screen name="index" options={{ title: 'Объекты' }} />
 					<Drawer.Screen name="profile" options={{ title: 'Профиль' }} />
-					<Drawer.Screen name="qr-scanner" options={{ title: 'Qr-код сканер' }} />
+					<Drawer.Screen
+						name="qr-scanner"
+						options={{
+							title: 'Qr-код сканер',
+						}}
+					/>
 				</Drawer>
 			</GestureHandlerRootView>
 		</>
@@ -54,7 +61,8 @@ export default AppLayout;
 
 const style = StyleSheet.create({
 	container: {
-		position: 'relative',
+		// position: 'relative',
+		// zIndex: 2,
 		flex: 1,
 	},
 });

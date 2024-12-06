@@ -59,7 +59,7 @@ export default SuccessNotification;
 const style = StyleSheet.create({
 	success: {
 		position: 'absolute',
-		top: -65,
+		top: 0,
 		left: 0,
 		right: 0,
 		alignItems: 'center',
@@ -67,7 +67,6 @@ const style = StyleSheet.create({
 		padding: 15,
 		height: 65,
 		backgroundColor: Colors.success,
-		zIndex: 100,
 	},
 	successText: {
 		fontSize: FontSize.f16,

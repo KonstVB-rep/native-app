@@ -3,14 +3,13 @@ import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { CameraView, Camera } from 'expo-camera';
 import { MaterialIcons } from '@expo/vector-icons';
 import SuccessNotification from '@/shared/SuccessNotification/SuccessNotification';
-import { Colors } from '@/shared/constants/styles-system';
+import { Colors, Radius } from '@/shared/constants/styles-system';
 
-import Svg, { Polygon } from 'react-native-svg';
+import Svg, { Rect } from 'react-native-svg';
 
 const QrCodeScanner = () => {
 	const [hasPermission, setHasPermission] = useState<boolean | null>(null);
 	const [scanned, setScanned] = useState<boolean>(false);
-	const [successScan, setSuccessScan] = useState<boolean>(false);
 	const [showBtnScan, setShowBtnScan] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -34,16 +33,11 @@ const QrCodeScanner = () => {
 	// };
 
 	const handleBarcodeScanned = async ({ type, data }: { type: string; data: string }) => {
-		console.log(`${type} and ${data} has been scanned!`);
-
-		setSuccessScan(true);
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 		setScanned(true);
-		setSuccessScan(false);
-		// alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 	};
 
-	const handleRepeateScan = () => {
+	const handlePressScan = () => {
 		setScanned(false);
 		setShowBtnScan(false);
 	};
@@ -63,7 +57,7 @@ const QrCodeScanner = () => {
 
 	return (
 		<>
-			<SuccessNotification successText={successScan ? 'QR-код успешно сканирован' : null} />
+			<SuccessNotification successText={scanned ? 'QR-код успешно сканирован' : null} />
 			<View style={styles.container}>
 				<CameraView
 					animateShutter={true}
@@ -71,20 +65,32 @@ const QrCodeScanner = () => {
 					barcodeScannerSettings={{
 						barcodeTypes: ['qr', 'pdf417'],
 					}}
-					style={StyleSheet.absoluteFillObject}
+					style={{ ...StyleSheet.absoluteFillObject, ...styles.camera }}
 				/>
 				{!showBtnScan && (
-					<Svg height="300" width="300">
-						<Polygon
-							points="0,0 300,0 300,300 0,300"
-							fill={Colors.blackAlpha50} // Цвет полигона с прозрачностью
-							stroke={Colors.linkColor} // Цвет границы
-							strokeWidth="2" // Толщина границы
+					<Svg height="300" width="300" viewBox="0 0 300 300">
+						<Rect
+							x="0"
+							y="0"
+							width="300"
+							height="300"
+							fill={Colors.blackAlpha50}
+							stroke={Colors.linkColor}
+							strokeWidth="4"
+							rx={Radius.r10}
 						/>
 					</Svg>
 				)}
 				{showBtnScan && (
-					<Pressable onPress={handleRepeateScan} style={styles.container__button}>
+					<Pressable
+						onPress={handlePressScan}
+						style={({ pressed }) => ({
+							...styles.container__button,
+							backgroundColor: pressed ? Colors.primaryLight : Colors.blackAlpha30,
+							width: pressed ? 140 : 120,
+							height: pressed ? 140 : 120,
+						})}
+					>
 						<MaterialIcons name="qr-code-scanner" size={48} color={Colors.linkColor} />
 					</Pressable>
 				)}
@@ -97,27 +103,29 @@ export default QrCodeScanner;
 
 const styles = StyleSheet.create({
 	container: {
+		position: 'relative',
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
+		// paddingHorizontal: 40,
+		// paddingVertical: '60%',
+		// backgroundColor: Colors.primaryLighter,
+	},
+	camera: {
+		zIndex: -1,
+		// marginHorizontal: '9%',
+		// marginVertical: '60%',
 	},
 	container__button: {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
 		transform: [{ translateX: '-50%' }, { translateY: '-50%' }],
-		backgroundColor: Colors.blackAlpha50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		height: 120,
 		width: 120,
-		borderRadius: 1000,
+		borderRadius: Radius.rFull,
 	},
-	// text: {
-	// 	color: Colors.secondary,
-	// 	fontFamily: FontFamily.FiraSans,
-	// 	textAlign: 'center',
-	// 	fontSize: FontSize.f18,
-	// } as TextStyle,
 });

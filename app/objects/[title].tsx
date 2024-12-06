@@ -1,15 +1,23 @@
-import { View, Text } from 'react-native';
+// import { View, StyleSheet } from 'react-native';
 import React from 'react';
-import { useLocalSearchParams } from 'expo-router';
-import { Colors } from '@/shared/constants/styles-system';
+// import { useLocalSearchParams } from 'expo-router';
+import QrCodeScanner from '@/widgets/objects/ui/QrCodeScanner/QrCodeScanner';
 
 const ObjectPage = () => {
-	const { title } = useLocalSearchParams();
+	// const { title } = useLocalSearchParams();
 	return (
-		<View>
-			<Text style={{ color: Colors.secondary }}>Страница объекта {title}</Text>
-		</View>
+		// <View style={styles.container}>
+		// {/* <Text style={{ color: Colors.secondary }}>Страница объекта {title}</Text> */}
+		<QrCodeScanner />
+		// </View>
 	);
 };
 
 export default ObjectPage;
+
+// const styles = StyleSheet.create({
+// 	container: {
+// 		position: 'relative',
+// 		flex: 1,
+// 	},
+// });
