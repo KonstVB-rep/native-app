@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TextStyle } from 'react-native';
 import { Colors, FontFamily, FontSize, Gaps } from '@/shared/constants/styles-system';
 
 import CustomLink from '@/shared/CustomLink/CustomLink';
@@ -39,5 +39,5 @@ const styles = StyleSheet.create({
 		color: Colors.secondary,
 		fontSize: FontSize.f18,
 		fontFamily: FontFamily.FiraSans,
-	},
+	} as TextStyle,
 });

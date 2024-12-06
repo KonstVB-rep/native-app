@@ -4,8 +4,7 @@ import ErrorNotification from '@/shared/ErrorNotification/ErrorNotification';
 import Input from '@/shared/Input/Input';
 import { useEffect, useState } from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import CustomLink from '@/shared/CustomLink/CustomLink';
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 import { loginAtom } from '@/entities/auth/model/auth.state';
 import { useAtom } from 'jotai';
 import { router } from 'expo-router';
@@ -44,28 +43,33 @@ export default function Login() {
 	return (
 		<View style={styles.container}>
 			<ErrorNotification error={localError} />
-			<View style={styles.content}>
+			<KeyboardAvoidingView
+				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+				style={styles.content}
+			>
 				<View style={styles.form}>
-					{/* <Image
+					<View style={styles.inputs}>
+						{/* <Image
 						resizeMode="cover"
 						source={require('../assets/images/_logo.png')}
 						style={styles.image}
 					/> */}
-					<Input
-						placeholder="Кто ты, воин?"
-						placeholderTextColor={Colors.gray}
-						onChangeText={setEmail}
-					/>
-					<Input
-						placeholder="Пароль"
-						placeholderTextColor={Colors.gray}
-						isPassword={true}
-						onChangeText={setPassword}
-					/>
+						<Input
+							placeholder="Кто ты, воин?"
+							placeholderTextColor={Colors.gray}
+							onChangeText={setEmail}
+						/>
+						<Input
+							placeholder="Пароль"
+							placeholderTextColor={Colors.gray}
+							isPassword={true}
+							onChangeText={setPassword}
+						/>
+					</View>
 					<Button text="Войти" isLoading={isLoading} onPress={submit} disabled={false} />
 				</View>
 				{/* <CustomLink text="Восстановить пароль" href={'/restore'} /> */}
-			</View>
+			</KeyboardAvoidingView>
 		</View>
 	);
 }
@@ -93,5 +97,8 @@ const styles = StyleSheet.create({
 		margin: 'auto',
 		gap: Gaps.g24,
 		maxWidth: 400,
+	},
+	inputs: {
+		gap: Gaps.g16,
 	},
 });
