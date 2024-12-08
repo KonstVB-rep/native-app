@@ -15,18 +15,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#16171D"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.anonymous.nativeapp"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    // "splash": {
-    //   "image": "./assets/images/splash-icon.png",
-    //   "resizeMode": "cover",
-    //   "backgroundColor": "#16171D"
-    // },
     "experiments": {
       "typedRoutes": true
     },
@@ -34,7 +36,10 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/FiraSans-Regular.ttf", "./assets/fonts/FiraSans-SemiBold.ttf"]
+          "fonts": [
+            "./assets/fonts/FiraSans-Regular.ttf",
+            "./assets/fonts/FiraSans-SemiBold.ttf"
+          ]
         }
       ],
       [
@@ -48,7 +53,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./local/assets/images/logo.png",
+          "icon": "./assets/images/logo.png",
           "color": "#16171D",
           "defaultChannel": "default",
           "enableBackgroundRemoteNotifications": false
@@ -61,7 +66,8 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
           "recordAudioAndroid": true
         }
-      ]
+      ],
+      "expo-router"
     ]
   }
 }

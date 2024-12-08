@@ -11,6 +11,7 @@ export const Colors = {
 	secondary: '#fffafa',
 	white: '#ffffff',
 	black: '#000000',
+	blackAlpha80: '#000000b3',
 	blackAlpha50: '#00000080',
 	blackAlpha30: '#0000004d',
 	gray: '#AFB2BF',
@@ -35,6 +36,7 @@ export const Gaps = {
 
 export const Radius = {
 	r10: 10,
+	r20: 20,
 	rFull: 1000,
 };
 

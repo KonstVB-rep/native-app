@@ -67,6 +67,7 @@ const style = StyleSheet.create({
 		padding: 15,
 		height: 65,
 		backgroundColor: Colors.success,
+		zIndex: 10,
 	},
 	successText: {
 		fontSize: FontSize.f16,

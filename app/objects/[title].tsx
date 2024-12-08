@@ -1,7 +1,7 @@
 // import { View, StyleSheet } from 'react-native';
 import React from 'react';
 // import { useLocalSearchParams } from 'expo-router';
-import QrCodeScanner from '@/widgets/objects/ui/QrCodeScanner/QrCodeScanner';
+import QrCodeScanner from '@/widgets/camera/ui/QrCodeScanner/QrCodeScanner';
 
 const ObjectPage = () => {
 	// const { title } = useLocalSearchParams();
