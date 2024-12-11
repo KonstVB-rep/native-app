@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.darkColor,
 		fontSize: FontSize.f20,
 		color: Colors.white,
-		fontFamily: FontFamily.FiraSans,
+		fontFamily: FontFamily.Poppins,
 	} as TextInputProps,
 	icon: {
 		position: 'absolute',

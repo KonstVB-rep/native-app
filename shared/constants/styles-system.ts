@@ -1,8 +1,3 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 export const Colors = {
 	primary: '#16171D',
 	primaryLight: '#1E1E29',
@@ -22,10 +17,13 @@ export const Colors = {
 	alert: '#CC384E',
 	success: '#00C48C',
 	transparent: 'transparent',
+	confirm: '#0057fa',
+	unConfirm: '#FF0000',
 };
 
 export const Gaps = {
 	g4: 4,
+	g8: 8,
 	g10: 10,
 	g16: 16,
 	g20: 20,
@@ -37,6 +35,7 @@ export const Gaps = {
 export const Radius = {
 	r10: 10,
 	r20: 20,
+	r30: 30,
 	rFull: 1000,
 };
 
@@ -49,6 +48,9 @@ export const FontSize = {
 };
 
 export const FontFamily = {
-	FiraSans: 'FiraSans-Regular',
-	FiraSansSemiBold: 'FiraSans-SemiBold',
+	Poppins: 'Poppins-Medium, sans-serif',
+	PoppinsSemiBold: 'Poppins-SemiBold, sans-serif',
+	PoppinsRegular: 'Poppins-Regular, sans-serif',
 };
+
+export const HEADER_HEIGHT = 64;

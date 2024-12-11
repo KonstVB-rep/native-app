@@ -73,6 +73,6 @@ const style = StyleSheet.create({
 		fontSize: FontSize.f16,
 		color: Colors.white,
 		textAlign: 'center',
-		fontFamily: FontFamily.FiraSans,
+		fontFamily: FontFamily.Poppins,
 	} as TextStyle,
 });

@@ -1,13 +1,17 @@
 import { StyleSheet, Text, TextStyle } from 'react-native';
 import React from 'react';
-import { FontSize, Colors, FontFamily, Gaps } from '../constants/styles-system';
+import { FontSize, FontFamily, Gaps, Colors } from '../constants/styles-system';
 import { Link, LinkProps } from 'expo-router';
 
-const CustomLink = ({ text, ...props }: LinkProps & { text?: string }) => {
+const CustomLink = ({
+	text,
+	textColor = Colors.linkColor,
+	...props
+}: LinkProps & { text?: string; textColor?: string }) => {
 	return (
-		<Link {...props} style={style.link}>
+		<Link style={style.link} {...props}>
 			{props.children || null}
-			{text && <Text>{text}</Text>}
+			{text && <Text style={{ ...style.text, color: textColor }}>{text}</Text>}
 		</Link>
 	);
 };
@@ -19,9 +23,10 @@ const style = StyleSheet.create({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		color: Colors.linkColor,
-		fontFamily: FontFamily.FiraSans,
-		fontSize: FontSize.f20,
 		gap: Gaps.g10,
 	} as TextStyle,
+	text: {
+		fontFamily: FontFamily.PoppinsSemiBold,
+		fontSize: FontSize.f20,
+	},
 });

@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		color: Colors.secondary,
 		fontSize: FontSize.f18,
-		fontFamily: FontFamily.FiraSans,
+		fontFamily: FontFamily.Poppins,
 	} as TextStyle,
 });

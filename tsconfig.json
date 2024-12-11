@@ -2,9 +2,21 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "types": ["react", "react-native"],
+    "types": [
+      "react",
+      "react-native"
+    ],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "jsx": "react-native",
-    "moduleSuffixes": [".ios", ".native", "andoid",""],
+    "moduleSuffixes": [
+      ".ios",
+      ".native",
+      "andoid",
+      ""
+    ],
     "paths": {
       "@/*": [
         "./*"
@@ -15,6 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
   ]
 }

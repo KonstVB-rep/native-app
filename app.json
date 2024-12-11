@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "icon": "./assets/images/ertel.png",
     "scheme": "native-app",
-    "backgroundColor": "",
+    "backgroundColor": "#16171D",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
@@ -36,9 +36,12 @@
       [
         "expo-font",
         {
+          
           "fonts": [
-            "./assets/fonts/FiraSans-Regular.ttf",
-            "./assets/fonts/FiraSans-SemiBold.ttf"
+            "./assets/fonts/Poppins-Medium.ttf",
+            "./assets/fonts/Poppins-Regular.ttf",
+            "./assets/fonts/Poppins-SemiBold.ttf",
+
           ]
         }
       ],

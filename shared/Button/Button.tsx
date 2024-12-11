@@ -71,7 +71,7 @@ const style = StyleSheet.create({
 	},
 	text: {
 		color: Colors.secondary,
-		fontFamily: FontFamily.FiraSans,
+		fontFamily: FontFamily.Poppins,
 		fontSize: FontSize.f18,
 	} as TextStyle,
 });

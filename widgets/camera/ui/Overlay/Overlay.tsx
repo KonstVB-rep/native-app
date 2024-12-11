@@ -1,4 +1,4 @@
-import { Colors } from '@/shared/constants/styles-system';
+import { Colors, HEADER_HEIGHT } from '@/shared/constants/styles-system';
 import { Canvas, DiffRect, rect, rrect } from '@shopify/react-native-skia';
 import { Dimensions, Platform, StyleSheet } from 'react-native';
 
@@ -7,11 +7,11 @@ const innerDimension = 300;
 const innerDimensionButton = 118;
 
 export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCircle' }) => {
-	const outer = rrect(rect(0, 0, width, height), 0, 0);
+	const outer = rrect(rect(-10, -10, width + 20, height), 0, 0);
 	const inner = rrect(
 		rect(
 			width / 2 - innerDimension / 2,
-			height / 2 - innerDimension / 2 - 75,
+			height / 2 - innerDimension / 2 - HEADER_HEIGHT,
 			innerDimension,
 			innerDimension,
 		),
@@ -22,10 +22,10 @@ export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCirc
 	const innerCircle = rrect(
 		rect(
 			width / 2 - innerDimensionButton / 2,
-			height / 2 - innerDimensionButton / 2 - 86,
+			height / 2 - innerDimensionButton / 2 - HEADER_HEIGHT,
 			innerDimensionButton,
 			innerDimensionButton,
-		), // 150 - это ширина и высота прямоугольника
+		), 
 		1000,
 		1000,
 	);
@@ -35,6 +35,7 @@ export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCirc
 		innerCircle,
 	};
 	const selectedInner = currentInnerRect[keyValue];
+
 	if (!selectedInner) {
 		console.warn(`Invalid keyValue: "${keyValue}"`);
 		return null; // Возвращаем null, если выбранный прямоугольник отсутствует
@@ -47,7 +48,7 @@ export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCirc
 				outer={outer}
 				color={Colors.black}
 				blendMode={'saturation'}
-				opacity={0.5}
+				opacity={0.7}
 			/>
 
 			<DiffRect
@@ -56,7 +57,7 @@ export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCirc
 				color={Colors.linkColor}
 				opacity={0.7}
 				style={'stroke'}
-				strokeWidth={2}
+				strokeWidth={3}
 			/>
 		</Canvas>
 	);
