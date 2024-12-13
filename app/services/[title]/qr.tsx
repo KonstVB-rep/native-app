@@ -13,7 +13,6 @@ const QrScannerServicePage = () => {
 	const { showModal, setShowModal } = useModal();
 	return (
 		<>
-			{/* <Text>{title}</Text> */}
 			<QrCodeScanner isOnFlashlight={isOnFlashlight} setShowModal={setShowModal} />
 			<FlashlightField
 				isOnFlashlight={isOnFlashlight}

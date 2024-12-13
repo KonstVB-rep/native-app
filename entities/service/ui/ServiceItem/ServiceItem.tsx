@@ -20,8 +20,9 @@ const ServiceItem = ({ title, image }: { title: string; image: string }) => {
 						onPress={() => router.push(`/services/${title}/qr`)}
 						style={(props) => [
 							{
-								backgroundColor: props.pressed ? Colors.primaryLighter : Colors.primaryLight,
-								outline: props.pressed ? '1px solid #fff' : 'none',
+								backgroundColor: props.pressed ? Colors.btnHoverColor : Colors.primaryLight,
+								borderColor: props.pressed ? Colors.linkColor : Colors.transparent,
+								borderWidth: 2,
 							},
 							style.action,
 						]}
@@ -37,8 +38,9 @@ const ServiceItem = ({ title, image }: { title: string; image: string }) => {
 						onPress={() => router.push(`/services/${title}/nfc`)}
 						style={(props) => [
 							{
-								backgroundColor: props.pressed ? Colors.primaryLighter : Colors.primaryLight,
-								outline: props.pressed ? '1px solid #fff' : 'none',
+								backgroundColor: props.pressed ? Colors.btnHoverColor : Colors.primaryLight,
+								borderColor: props.pressed ? Colors.linkColor : Colors.transparent,
+								borderWidth: 2,
 							},
 							style.action,
 						]}
@@ -51,12 +53,6 @@ const ServiceItem = ({ title, image }: { title: string; image: string }) => {
 						</View>
 					</Pressable>
 				</View>
-				{/* <CustomLink
-						text="Скановать QR-код"
-						href={'/objects/Красная поляна'}
-					>
-						<MaterialIcons name="qr-code-scanner" size={24} color={Colors.linkColor} />
-					</CustomLink> */}
 			</View>
 		</>
 	);
@@ -67,7 +63,7 @@ export default ServiceItem;
 const style = StyleSheet.create({
 	content__item: {
 		flexDirection: 'column',
-		gap: 20,
+		gap: Gaps.g10,
 		padding: 10,
 		marginVertical: 8,
 		borderRadius: Radius.r10,
@@ -83,11 +79,11 @@ const style = StyleSheet.create({
 		fontFamily: FontFamily.PoppinsSemiBold,
 	},
 	image: {
-		height: 200,
-		borderRadius: Radius.rFull,
-		marginBottom: 20,
-		aspectRatio: 1,
+		height: 100,
+		width: '100%',
+		borderRadius: Radius.r10,
 		margin: 'auto',
+		aspectRatio: 16 / 9,
 	},
 	actions__container: {
 		flexDirection: 'row',

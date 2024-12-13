@@ -6,4 +6,5 @@
     "source.fixAll.eslint": "always"
   },
   "files.autoSave": "afterDelay",
+  "java.configuration.updateBuildConfiguration": "automatic",
 }

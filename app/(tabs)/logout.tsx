@@ -45,19 +45,24 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		position: 'absolute',
-		inset: 0,
 		width: '100%',
 		height: '100%',
 		opacity: 0.2,
 	},
 	content: {
+		flex: 1,
 		gap: 20,
 		paddingBottom: 20,
 		flexDirection: 'row',
 	},
 	pressable: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		textAlign: 'center',
 		borderRadius: Radius.r30,
 		width: 100,
+		alignSelf: 'center',
 		padding: 16,
 	},
 	text: {

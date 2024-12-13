@@ -38,7 +38,6 @@ const MenuIcons = (props: SvgProps) => (
 		width={24}
 		height={24}
 		fill="none"
-		// stroke={Colors.gray}
 		stroke="currentColor"
 		strokeLinecap="round"
 		strokeLinejoin="round"
@@ -48,8 +47,25 @@ const MenuIcons = (props: SvgProps) => (
 		<Path d="M15 12H3M17 18H3M21 6H3" />
 	</Svg>
 );
+
+const ListIcon = (props: SvgProps) => (
+	<Svg
+		width={24}
+		height={24}
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={2}
+		{...props}
+	>
+		<path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13" />
+	</Svg>
+);
+
 export const Icons = {
 	eyeOpened: EyeOpenedIcon,
 	eyeClosed: EyeClosedIcon,
 	menu: MenuIcons,
+	list: ListIcon,
 };

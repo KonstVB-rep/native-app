@@ -1,13 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Redirect, Stack } from 'expo-router';
-import { authAtom } from '@/entities/auth/model/auth.state';
-import { useAtomValue } from 'jotai';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '@/shared/constants/styles-system';
 
 const ServicesLayout = () => {
-	const { accessToken } = useAtomValue(authAtom);
+	// const { accessToken } = useAtomValue(authAtom);
 
 	// if (!accessToken) {
 	// 	return <Redirect href="/login" />;

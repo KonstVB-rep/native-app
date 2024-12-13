@@ -25,7 +25,7 @@ export const Overlay = ({ keyValue = 'inner' }: { keyValue: 'inner' | 'innerCirc
 			height / 2 - innerDimensionButton / 2 - HEADER_HEIGHT,
 			innerDimensionButton,
 			innerDimensionButton,
-		), 
+		),
 		1000,
 		1000,
 	);

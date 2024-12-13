@@ -71,9 +71,11 @@ const QrCodeScanner = ({
 	if (!permission.granted) {
 		return (
 			<View style={{ ...styles.container, ...styles.container_dark }}>
-				<Feather name="camera-off" size={120} color={Colors.secondary} />
-				<Text style={styles.text}>Нет доступа к камере</Text>
-				<Button onPress={requestPermission} text="Предоставьте разрешение" />
+				<View style={styles.content}>
+					<Feather name="camera-off" size={120} color={Colors.secondary} />
+					<Text style={styles.text}>Нет доступа к камере</Text>
+					<Button onPress={requestPermission} text="Предоставьте разрешение" />
+				</View>
 			</View>
 		);
 	}
@@ -119,13 +121,19 @@ function createStyles(windowHeight: number) {
 		container: {
 			position: 'relative',
 			flex: 1,
+		},
+		container_dark: {
+			backgroundColor: Colors.primaryLight,
+		},
+		content: {
+			position: 'absolute',
+			top: '50%',
+			left: '50%',
+			transform: [{ translateX: '-50%' }, { translateY: '-65%' }],
 			flexDirection: 'column',
 			justifyContent: 'center',
 			alignItems: 'center',
 			gap: Gaps.g20,
-		},
-		container_dark: {
-			backgroundColor: Colors.primaryLight,
 		},
 		text: {
 			color: Colors.secondary,
